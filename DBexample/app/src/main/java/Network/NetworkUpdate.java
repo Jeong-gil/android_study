@@ -19,7 +19,7 @@ import java.net.URL;
 
 public class NetworkUpdate extends AsyncTask<String,Void,String> {
     private URL Url;
-    private String URL_Adress = "http://10.100.103.16/testDB/testDB.jsp";
+    private String URL_Adress = "http://10.100.103.16/testDB/testDB3_update.jsp";
     private Custom_Adapter adapter;
     public NetworkUpdate(Custom_Adapter adapter){
         this.adapter = adapter;
@@ -69,7 +69,7 @@ public class NetworkUpdate extends AsyncTask<String,Void,String> {
         } catch (IOException e){
             e.printStackTrace();
         }
-        Log.i("Get result",res);
+        Log.i("Get result", res);
         return res;
     }
     @Override

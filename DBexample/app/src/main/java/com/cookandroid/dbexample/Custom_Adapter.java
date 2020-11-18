@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -74,13 +75,46 @@ public class Custom_Adapter extends BaseAdapter {
             @Override
             public void onClick(View v) {
 
+                final View view = mAct.getLayoutInflater().inflate(R.layout.dialog_add, null);
+                final EditText edtID, edtName, edtPhone, edtGrade;
+                edtID = (EditText) view.findViewById(R.id.edtID);
+                edtName = (EditText) view.findViewById(R.id.edtName);
+                edtPhone = (EditText) view.findViewById(R.id.edtPhone);
+                edtGrade = (EditText) view.findViewById(R.id.edtGrade);
+
+                edtID.setText(tvID.getText());
+                edtName.setText(tvName.getText());
+                edtPhone.setText(tvPhone.getText());
+                edtGrade.setText(tvGrade.getText());
+
                 String id = tvID.getText().toString();
                 String name = tvName.getText().toString();
                 String phone = tvPhone.getText().toString();
                 String grade = tvGrade.getText().toString();
 
-                new NetworkUpdate(Custom_Adapter.this).execute(id,name,phone,grade);
+                edtID.setFocusable(false);
 
+                new AlertDialog.Builder(mAct)
+                        .setTitle("수정")
+                        .setView(view)
+                        .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                String id = edtID.getText().toString();
+                                String name = edtName.getText().toString();
+                                String phone = edtPhone.getText().toString();
+                                String grade = edtGrade.getText().toString();
+
+                                new NetworkUpdate(Custom_Adapter.this).execute(id, name, phone, grade);
+                            }
+                        })
+                        .setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.cancel();
+                            }
+                        })
+                        .setCancelable(false).show();
             }
         });
         Button deleteButton = view.findViewById(R.id.btn_delete);

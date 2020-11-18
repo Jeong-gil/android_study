@@ -18,14 +18,28 @@ import Network.NetworkInsert;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Button refreshBtn, addBtn;
+    private Button btn_search, refreshBtn, addBtn;
+    private EditText edt_search;
     private ListView listView;
     private Custom_Adapter adapter;
+    private String searchText = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        btn_search = (Button) findViewById(R.id.btn_search);
+        edt_search = (EditText) findViewById(R.id.edt_search);
+
+        btn_search.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                searchText = edt_search.getText().toString();
+                new NetworkGet((Custom_Adapter)listView.getAdapter()).execute(searchText);
+            }
+        });
 
         listView = findViewById(R.id.listView);
         adapter = new Custom_Adapter(MainActivity.this, R.layout.adapter_userinfo, new ArrayList<UserInfo>());
