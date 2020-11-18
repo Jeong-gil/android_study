@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
     private Custom_Adapter adapter;
     private String searchText = "";
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,6 +32,12 @@ public class MainActivity extends AppCompatActivity {
 
         btn_search = (Button) findViewById(R.id.btn_search);
         edt_search = (EditText) findViewById(R.id.edt_search);
+
+        listView = findViewById(R.id.listView);
+        adapter = new Custom_Adapter(MainActivity.this, R.layout.adapter_userinfo, new ArrayList<UserInfo>());
+        listView.setAdapter(adapter);
+
+        new NetworkGet((Custom_Adapter)listView.getAdapter()).execute("");
 
         btn_search.setOnClickListener(new View.OnClickListener() {
 
@@ -41,19 +48,18 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        listView = findViewById(R.id.listView);
-        adapter = new Custom_Adapter(MainActivity.this, R.layout.adapter_userinfo, new ArrayList<UserInfo>());
-        listView.setAdapter(adapter);
-
         refreshBtn = findViewById(R.id.btnRefresh);
         refreshBtn.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
                 new NetworkGet((Custom_Adapter)listView.getAdapter()).execute("");
             }
         });
+
         addBtn = findViewById(R.id.btnAdd);
         addBtn.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View view) {
                 final View v = getLayoutInflater().inflate(R.layout.dialog_add,null);
@@ -61,6 +67,7 @@ public class MainActivity extends AppCompatActivity {
                         .setTitle("멤버 추가")
                         .setView(v)
                         .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
                                 String id = ((EditText)v.findViewById(R.id.edtID)).getText().toString();
@@ -81,7 +88,6 @@ public class MainActivity extends AppCompatActivity {
                         .show();
             }
         });
-        new NetworkGet((Custom_Adapter)listView.getAdapter()).execute("");
 
     }
 }
