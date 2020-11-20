@@ -56,7 +56,7 @@ public class MenuActivity extends AppCompatActivity {
     private void intentmenu(int position, String menuname){
         switch (menuname){
             case "BottomNavigation" :
-                Intent intent_bottomnavi = new Intent(MenuActivity.this, Menu_BottomNavigation.class);
+                Intent intent_bottomnavi = new Intent(MenuActivity.this, Menu_ButtomNavigation.class);
                 startActivity(intent_bottomnavi);
                 break;
         }
