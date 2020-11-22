@@ -226,5 +226,43 @@ public class QueryBean {
 		System.out.println(sb.toString());
 		return res;
 	}
+	
+public int login(String userID, String userPassword) {
+		
+		StringBuffer sb = new StringBuffer();
+		PreparedStatement pstmt = null;
+		
+		sb.append(" SELECT userPassword ");
+		sb.append(" 	FROM user ");
+		sb.append(" WHERE ");
+		sb.append(" 	userID = ? ");
+		
+		System.out.println(sb.toString());
+		
+		try {
+			pstmt = conn.prepareStatement(sb.toString());
+			pstmt.setString(1, userID);
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()) {
+				if(rs.getString(1).equals(userPassword)) {
+					return 1;  // 로그인 성공
+				} else {
+					return 0;  // 비밀번호 불일치
+				}
+			}
+			return -1;  // 아이디 없음
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (pstmt != null)
+					pstmt.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		return -2;  // 데이터베이스 오류
+	}
 
 }

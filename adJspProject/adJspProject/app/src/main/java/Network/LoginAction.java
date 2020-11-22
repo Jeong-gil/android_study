@@ -1,9 +1,12 @@
 package Network;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.util.Log;
+import android.widget.Toast;
 
-import com.example.adjspproject.Custom_Adapter;
+import com.example.adjspproject.MenuActivity;
 
 import org.json.JSONException;
 
@@ -16,14 +19,14 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-public class NetworkInsert extends AsyncTask<String,Void,String> {
+public class LoginAction extends AsyncTask<String,Void,String> {
 
     private URL Url;
-    private String URL_Adress = "http://아이피주소:8090/adJspProject/testDB3_insert.jsp";
-    private Custom_Adapter adapter;
+    private String URL_Adress = "http://아이피주소:8090/adJspProject/loginAction.jsp";
+    Context context;
 
-    public NetworkInsert(Custom_Adapter adapter){
-        this.adapter = adapter;
+    public LoginAction(Context context) {
+        this.context = context;
     }
 
     @Override
@@ -51,17 +54,16 @@ public class NetworkInsert extends AsyncTask<String,Void,String> {
 
             //전송값 설정
             StringBuffer buffer = new StringBuffer();
-            buffer.append("id").append("=").append(strings[0]);
-            buffer.append("&name").append("=").append(strings[1]);
-            buffer.append("&phone").append("=").append(strings[2]);
-            buffer.append("&grade").append("=").append(strings[3]);
+            buffer.append("userID").append("=").append(strings[0]);
+            buffer.append("&userPassword").append("=").append(strings[1]);
 
             //서버로 전송
             OutputStreamWriter outStream = new OutputStreamWriter(conn.getOutputStream(),"utf-8");
             PrintWriter writer = new PrintWriter(outStream);
             writer.write(buffer.toString());
             writer.flush();
-
+            
+            // 응답 받기
             StringBuilder builder = new StringBuilder();
             BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream(),"utf-8"));
 
@@ -95,11 +97,15 @@ public class NetworkInsert extends AsyncTask<String,Void,String> {
             e.printStackTrace();
         }
 
-        if(res==0){
-
-        }
-        else {
-            new NetworkGet(adapter).execute("");
+        if (res == 1) {
+            Intent intent = new Intent(context, MenuActivity.class);
+            context.startActivity(intent);
+        } else if (res == 0) {
+            Toast.makeText(context, "비밀번호가 일치하지 않습니다", Toast.LENGTH_SHORT).show();
+        } else if (res == -1) {
+            Toast.makeText(context, "존재하지 않는 아이디입니다", Toast.LENGTH_SHORT).show();
+        } else if (res == -2) {
+            Toast.makeText(context, "DB서버 오류 발생", Toast.LENGTH_SHORT).show();
         }
     }
 }
