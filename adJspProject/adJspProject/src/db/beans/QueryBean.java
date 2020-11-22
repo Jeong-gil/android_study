@@ -227,7 +227,7 @@ public class QueryBean {
 		return res;
 	}
 	
-public int login(String userID, String userPassword) {
+	public int login(String userID, String userPassword) {
 		
 		StringBuffer sb = new StringBuffer();
 		PreparedStatement pstmt = null;
@@ -264,5 +264,33 @@ public int login(String userID, String userPassword) {
 		}
 		return -2;  // 데이터베이스 오류
 	}
-
+	
+public int joinUser(String userID, String userPassword, String userName, String userGender, String userEmail) {
+		
+		StringBuffer sb = new StringBuffer();
+		PreparedStatement pstmt = null;
+		
+		sb.append(" INSERT INTO ");
+		sb.append(" 	user (userID, userPassword, userName, userGender, userEmail) ");
+		sb.append(" VALUES ");
+		sb.append(" 	('"+ userID +"', '"+ userPassword +"', '"+ userName +"', '"+ userGender +"', '"+ userEmail +"')");
+		
+		System.out.println(sb.toString());
+		
+		try {
+			pstmt = conn.prepareStatement(sb.toString());
+			return pstmt.executeUpdate();  // 1 반환
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (pstmt != null)
+					pstmt.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		return -1;  // 데이터베이스 오류
+	}
 }
