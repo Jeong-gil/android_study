@@ -61,6 +61,7 @@ public class JsonParser {
 
     public static int getTitleJson(String response, ArrayList<UserContents> contentsList) throws JSONException {
 
+        String strNo;
         String strUserID;
         String strTitle;
         String strContent;
@@ -71,6 +72,11 @@ public class JsonParser {
         for (int i=0; i < jsonArray.length(); i++) {
 
             JSONObject jsonObj = (JSONObject)jsonArray.get(i);
+            if (jsonObj.getString("no").toString().equals("null"))
+                strNo = "-";
+            else
+                strNo = jsonObj.getString("no").toString();
+
             if (jsonObj.getString("userID").toString().equals("null"))
                 strUserID = "-";
             else
@@ -86,7 +92,7 @@ public class JsonParser {
             else
                 strContent = jsonObj.getString("content").toString();
 
-            contentsList.add(new UserContents(strTitle, strContent));
+            contentsList.add(new UserContents(strNo, strUserID, strTitle, strContent));
         }
         return jsonArray.length();
     }

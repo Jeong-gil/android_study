@@ -244,6 +244,7 @@ public class QueryBean {
 			res.add(rs.getString(1));
 			res.add(rs.getString(2));
 			res.add(rs.getString(3));
+			res.add(rs.getString(4));
 		}
 		System.out.println(sb.toString());
 		return res;

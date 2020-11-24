@@ -30,17 +30,19 @@ if(resArr.size() == 0) {
 	out.println("}");
 } else {
 	out.println("{");
-	out.println("\"userID\": \""			+ (String) resArr.get(0) + "\", ");
-	out.println("\"title\": \""			+ (String) resArr.get(1) + "\", ");
-	out.println("\"content\": \""	+ (String) resArr.get(2) + "\"");
+	out.println("\"no\": \""			+ (String) resArr.get(0) + "\", ");
+	out.println("\"userID\": \""			+ (String) resArr.get(1) + "\", ");
+	out.println("\"title\": \""			+ (String) resArr.get(2) + "\", ");
+	out.println("\"content\": \""	+ (String) resArr.get(3) + "\"");
 	out.println("} ");
 	
-	for (int i = 3; i < resArr.size(); i += 3) {
+	for (int i = 4; i < resArr.size(); i += 4) {
 		out.println(", ");
 		out.println("{");
-		out.println("\"userID\": \""			+ (String) resArr.get(i) + "\", ");
-		out.println("\"title\": \""			+ (String) resArr.get(i + 1) + "\", ");
-		out.println("\"content\": \""	+ (String) resArr.get(i + 2) + "\"");
+		out.println("\"no\": \""			+ (String) resArr.get(i) + "\", ");
+		out.println("\"userID\": \""			+ (String) resArr.get(i + 1) + "\", ");
+		out.println("\"title\": \""			+ (String) resArr.get(i + 2) + "\", ");
+		out.println("\"content\": \""	+ (String) resArr.get(i + 3) + "\"");
 		out.println("} ");
 	}
 	out.println("]");

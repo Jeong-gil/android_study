@@ -20,7 +20,6 @@ public class Menu_BottomNavi_Fragment_1 extends Fragment {
 
     private View v;
     private ListView listView;
-//    private Custom_Adapter adapter;
     private FragAdapter fragAdapter;
 
     @Nullable
