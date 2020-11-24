@@ -81,6 +81,7 @@ public class LoginActivity extends AppCompatActivity {
                                 genderOk = 1;
                                 break;
                             default:
+                                System.out.println("성별을 선택하세요");
                                 Toast.makeText(LoginActivity.this, "성별을 선택하세요", Toast.LENGTH_SHORT).show();
                         }
 

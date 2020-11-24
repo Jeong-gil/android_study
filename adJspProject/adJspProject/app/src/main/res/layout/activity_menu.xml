@@ -29,7 +29,7 @@
             app:layout_collapseMode="pin"
             app:menu="@menu/toolbar_menu"
             app:navigationIcon="@drawable/baseline_menu_white_18dp"
-            app:title="Material"
+            app:title="메뉴들"
             android:background="#2d6187"/>
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>

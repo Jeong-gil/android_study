@@ -19,6 +19,6 @@ public class DBconnection {
 	public static Connection getConnection(String ip, int port, String db, String user, String pw) throws Exception {
 		System.out.println("DB연결시도");
 		Class.forName("com.mysql.cj.jdbc.Driver");
-		return DriverManager.getConnection("jdbc:mysql://" + ip + ":" + port + "/" + db + "??serverTimezone=UTC", user, pw);
+		return DriverManager.getConnection("jdbc:mysql://" + ip + ":" + port + "/" + db + "?serverTimezone=UTC", user, pw);
 	}
 }

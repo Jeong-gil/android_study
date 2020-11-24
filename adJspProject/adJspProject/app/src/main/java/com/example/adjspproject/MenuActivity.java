@@ -26,21 +26,21 @@ public class MenuActivity extends AppCompatActivity {
 
         MenuList = new ArrayList();
         MenuList.add("BottomNavigation");
-        MenuList.add("메뉴 2번가");
-        MenuList.add("메뉴 3번가");
-        MenuList.add("메뉴 4번가");
-        MenuList.add("메뉴 5번가");
-        MenuList.add("메뉴 6번가");
-        MenuList.add("메뉴 7번가");
-        MenuList.add("메뉴 8번가");
-        MenuList.add("메뉴 9번가");
-        MenuList.add("메뉴 10번가");
-        MenuList.add("메뉴 11번가");
-        MenuList.add("메뉴 12번가");
-        MenuList.add("메뉴 13번가");
-        MenuList.add("메뉴 14번가");
-        MenuList.add("메뉴 15번가");
-        MenuList.add("메뉴 16번가");
+        MenuList.add("1");
+        MenuList.add("2");
+        MenuList.add("3");
+        MenuList.add("4");
+        MenuList.add("5");
+        MenuList.add("6");
+        MenuList.add("7");
+        MenuList.add("8");
+        MenuList.add("9");
+        MenuList.add("10");
+        MenuList.add("11");
+        MenuList.add("12");
+        MenuList.add("13");
+        MenuList.add("14");
+        MenuList.add("15");
 
         menuAdapter = new MenuAdapter(MenuList);
         rv_menu.setLayoutManager(llm);
@@ -49,15 +49,16 @@ public class MenuActivity extends AppCompatActivity {
         menuAdapter.setOnItemClickListener(new MenuAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position, String menuname) {
-                intentmenu(position,menuname);
+                intentmenu(position, menuname);
             }
         });
     }
+
     private void intentmenu(int position, String menuname){
-        switch (menuname){
+        switch (menuname) {
             case "BottomNavigation" :
-                Intent intent_bottomnavi = new Intent(MenuActivity.this, Menu_ButtomNavigation.class);
-                startActivity(intent_bottomnavi);
+                Intent intentBottomNavi = new Intent(MenuActivity.this, Menu_BottomNavigation.class);
+                startActivity(intentBottomNavi);
                 break;
         }
     }

@@ -9,6 +9,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
 
 import com.example.adjspproject.MenuActivity;
+import com.example.adjspproject.UserSession;
 
 import org.json.JSONException;
 
@@ -21,11 +22,15 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-public class JoinAction extends AsyncTask<String,Void,String> {
+public class JoinAction extends AsyncTask<String, Void, String> {
 
     private URL Url;
-    private String URL_Adress = "http://아이피주소:8090/adJspProject/joinAction.jsp";
+    private String URL_Adress = "http://10.100.103.96:8090/adJspProject/joinAction.jsp";
     private Context context;
+
+    // 세션처럼 안드로이드에 아이디값 넘겨줄 변수
+    private String userID;
+
     AlertDialog.Builder dialog_join;
 
     public JoinAction(Context context, AlertDialog.Builder dialog_join) {
@@ -42,6 +47,7 @@ public class JoinAction extends AsyncTask<String,Void,String> {
     protected String doInBackground(String... strings) {
 
         String res = "";
+        userID = strings[0];
 
         try {
             Url = new URL(URL_Adress);
@@ -104,16 +110,22 @@ public class JoinAction extends AsyncTask<String,Void,String> {
         }
 
         if (res == 1) {
-//            Intent intent = new Intent(context, MenuActivity.class);
-//            context.startActivity(intent);
+            // 회원가입 성공시, 유저아이디를 안드로이드에 저장
+            UserSession.userID = userID;
+            
+            Intent intent = new Intent(context, MenuActivity.class);
+            context.startActivity(intent);
 
-            AlertDialog ad = dialog_join.create();
-            ad.dismiss();
-            System.out.println("ad : " + ad);
+//            AlertDialog ad = dialog_join.create();
+//            ad.dismiss();
+//            System.out.println("ad : " + ad);
+            System.out.println("회원가입 완료");
             Toast.makeText(context, "회원가입 완료", Toast.LENGTH_SHORT).show();
         } else if (res == 0) {
+            System.out.println("입력되지 않은 항목이 있습니다");
             Toast.makeText(context, "입력되지 않은 항목이 있습니다", Toast.LENGTH_SHORT).show();
         } else if (res == -1) {
+            System.out.println("중복된 아이디 입니다");
             Toast.makeText(context, "중복된 아이디 입니다", Toast.LENGTH_SHORT).show();
         }
     }

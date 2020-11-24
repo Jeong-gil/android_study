@@ -2,19 +2,19 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/bottomnavi_one"
+        android:id="@+id/botton_navi_one"
         android:enabled="true"
         android:icon="@drawable/baseline_list_alt_black_18dp"
         android:title="PAGE_1"
         app:showAsAction="always" />
     <item
-        android:id="@+id/bottomnavi_two"
+        android:id="@+id/botton_navi_two"
         android:enabled="true"
         android:icon="@drawable/baseline_list_alt_black_18dp"
         android:title="PAGE_2"
         app:showAsAction="always" />
     <item
-        android:id="@+id/bottomnavi_three"
+        android:id="@+id/botton_navi_three"
         android:enabled="true"
         android:icon="@drawable/baseline_list_alt_black_18dp"
         android:title="PAGE_3"

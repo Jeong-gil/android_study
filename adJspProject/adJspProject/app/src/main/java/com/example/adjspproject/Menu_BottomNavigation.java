@@ -12,15 +12,15 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class Menu_ButtomNavigation extends AppCompatActivity {
+public class Menu_BottomNavigation extends AppCompatActivity {
     FrameLayout frameLayout;
     BottomNavigationView bottomNavigationView;
     FragmentManager fragmentManager;
     FragmentTransaction fragmentTransaction;
 
-    Menu_ButtomNavi_Fragment_1 menu_buttomNavi_fragment_1 = new Menu_ButtomNavi_Fragment_1();
-    Menu_ButtomNavi_Fragment_2 menu_buttomNavi_fragment_2 = new Menu_ButtomNavi_Fragment_2();
-    Menu_ButtomNavi_Fragment_3 menu_buttomNavi_fragment_3 = new Menu_ButtomNavi_Fragment_3();
+    Menu_BottomNavi_Fragment_1 menu_bottomNavi_fragment_1 = new Menu_BottomNavi_Fragment_1();
+    Menu_BottomNavi_Fragment_2 menu_bottomNavi_fragment_2 = new Menu_BottomNavi_Fragment_2();
+    Menu_BottomNavi_Fragment_3 menu_bottomNavi_fragment_3 = new Menu_BottomNavi_Fragment_3();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -31,7 +31,7 @@ public class Menu_ButtomNavigation extends AppCompatActivity {
         frameLayout = (FrameLayout) findViewById(R.id.framelayout);
         fragmentManager = getSupportFragmentManager();
         fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.add(R.id.framelayout, menu_buttomNavi_fragment_1);
+        fragmentTransaction.add(R.id.framelayout, menu_bottomNavi_fragment_1);
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
 
@@ -47,16 +47,16 @@ public class Menu_ButtomNavigation extends AppCompatActivity {
         fragmentTransaction = fragmentManager.beginTransaction();
 
         switch (title_id) {
-            case R.id.bottomnavi_one :
-                fragmentTransaction.replace(R.id.framelayout, menu_buttomNavi_fragment_1);
+            case R.id.botton_navi_one:
+                fragmentTransaction.replace(R.id.framelayout, menu_bottomNavi_fragment_1);
                 fragmentTransaction.commit();
                 break;
-            case R.id.bottomnavi_two :
-                fragmentTransaction.replace(R.id.framelayout, menu_buttomNavi_fragment_2);
+            case R.id.botton_navi_two:
+                fragmentTransaction.replace(R.id.framelayout, menu_bottomNavi_fragment_2);
                 fragmentTransaction.commit();
                 break;
-            case R.id.bottomnavi_three :
-                fragmentTransaction.replace(R.id.framelayout, menu_buttomNavi_fragment_3);
+            case R.id.botton_navi_three:
+                fragmentTransaction.replace(R.id.framelayout, menu_bottomNavi_fragment_3);
                 fragmentTransaction.commit();
                 break;
         }
