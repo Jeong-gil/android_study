@@ -1,5 +1,6 @@
 package Network;
 
+import com.example.adjspproject.UserContents;
 import com.example.adjspproject.UserInfo;
 
 import org.json.JSONArray;
@@ -55,6 +56,43 @@ public class JsonParser {
         }
         return jsonArray.length();
     }
+
+
+
+    public static int getTitleJson(String response, ArrayList<UserContents> contentsList) throws JSONException {
+
+        String strUserID;
+        String strTitle;
+        String strContent;
+
+        JSONObject rootJSON = new JSONObject(response);
+        JSONArray jsonArray = new JSONArray(rootJSON.getString("datas"));
+
+        for (int i=0; i < jsonArray.length(); i++) {
+
+            JSONObject jsonObj = (JSONObject)jsonArray.get(i);
+            if (jsonObj.getString("userID").toString().equals("null"))
+                strUserID = "-";
+            else
+                strUserID = jsonObj.getString("userID").toString();
+
+            if (jsonObj.getString("title").toString().equals("null"))
+                strTitle = "-";
+            else
+                strTitle = jsonObj.getString("title").toString();
+
+            if (jsonObj.getString("content").toString().equals("null"))
+                strContent = "-";
+            else
+                strContent = jsonObj.getString("content").toString();
+
+            contentsList.add(new UserContents(strTitle, strContent));
+        }
+        return jsonArray.length();
+    }
+
+
+
     static public int getResultJson(String response) throws JSONException {
 
         JSONArray jsonArray = new JSONArray(response);

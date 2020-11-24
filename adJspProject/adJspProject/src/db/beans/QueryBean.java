@@ -227,6 +227,28 @@ public class QueryBean {
 		return res;
 	}
 	
+	public ArrayList searchTitle(String title) throws Exception {
+		
+		StringBuffer sb = new StringBuffer();
+		
+		sb.append(" SELECT * ");
+		sb.append(" FROM contents ");
+		sb.append(" WHERE ");
+		sb.append(" title ");
+		sb.append(" LIKE '%" +title+ "%' ");
+		
+		rs = stmt.executeQuery(sb.toString());
+		
+		ArrayList res = new ArrayList();
+		while (rs.next()) {
+			res.add(rs.getString(1));
+			res.add(rs.getString(2));
+			res.add(rs.getString(3));
+		}
+		System.out.println(sb.toString());
+		return res;
+	}
+	
 	public int login(String userID, String userPassword) {
 		
 		StringBuffer sb = new StringBuffer();
