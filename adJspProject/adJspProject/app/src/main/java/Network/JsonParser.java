@@ -57,8 +57,6 @@ public class JsonParser {
         return jsonArray.length();
     }
 
-
-
     public static int getTitleJson(String response, ArrayList<UserContents> contentsList) throws JSONException {
 
         String strNo;
@@ -74,8 +72,11 @@ public class JsonParser {
             JSONObject jsonObj = (JSONObject)jsonArray.get(i);
             if (jsonObj.getString("no").toString().equals("null"))
                 strNo = "-";
-            else
+            else {
                 strNo = jsonObj.getString("no").toString();
+                System.out.println("테스트 : " + strNo);
+            }
+
 
             if (jsonObj.getString("userID").toString().equals("null"))
                 strUserID = "-";
@@ -97,7 +98,25 @@ public class JsonParser {
         return jsonArray.length();
     }
 
+    public static String getContentJson(String response) throws JSONException {
 
+        String strContent;
+
+        JSONObject rootJSON = new JSONObject(response);
+        JSONArray jsonArray = new JSONArray(rootJSON.getString("datas"));
+
+        for (int i=0; i < jsonArray.length(); i++) {
+
+            JSONObject jsonObj = (JSONObject)jsonArray.get(i);
+            if (jsonObj.getString("content").toString().equals("null"))
+                strContent = "-";
+            else {
+                strContent = jsonObj.getString("content").toString();
+            }
+            return strContent;
+        }
+        return "";
+    }
 
     static public int getResultJson(String response) throws JSONException {
 

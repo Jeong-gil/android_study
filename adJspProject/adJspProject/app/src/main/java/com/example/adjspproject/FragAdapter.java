@@ -53,6 +53,10 @@ public class FragAdapter extends BaseAdapter {
         final TextView tvFragItem = view.findViewById(R.id.tv_fragItem);
         tvFragItem.setText(userContentsArr.get(i).title);
 
+        final TextView tvFragItem2 = view.findViewById(R.id.tv_fragItem2);
+        tvFragItem2.setText(userContentsArr.get(i).no);
+        tvFragItem2.setVisibility(View.GONE);
+
         return view;
     }
 }

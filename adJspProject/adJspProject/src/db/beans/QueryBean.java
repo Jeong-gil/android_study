@@ -250,6 +250,30 @@ public class QueryBean {
 		return res;
 	}
 	
+	
+	
+	public String getContentByNo(String no) throws Exception {
+		
+		StringBuffer sb = new StringBuffer();
+		
+		sb.append(" SELECT content ");
+		sb.append(" FROM contents ");
+		sb.append(" WHERE ");
+		sb.append(" no = "+ no );
+		
+		rs = stmt.executeQuery(sb.toString());
+		
+		String res = "";
+		if (rs.next()) {
+			res = rs.getString(1);
+		}
+		System.out.println(sb.toString());
+		return res;
+	}
+	
+	
+	
+	
 	public int login(String userID, String userPassword) {
 		
 		StringBuffer sb = new StringBuffer();

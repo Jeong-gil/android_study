@@ -3,9 +3,6 @@ package Network;
 import android.os.AsyncTask;
 import android.util.Log;
 
-import com.example.adjspproject.FragAdapter;
-import com.example.adjspproject.UserContents;
-
 import org.json.JSONException;
 
 import java.io.BufferedReader;
@@ -16,17 +13,12 @@ import java.io.PrintWriter;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.ArrayList;
 
-public class TitleGet extends AsyncTask<String,Void,String> {
+public class GetContent extends AsyncTask<String,Void,String> {
 
     private URL Url;
-    private String URL_Adress = "http://10.100.103.96:8090/adJspProject/titleGet.jsp";
-    private FragAdapter adapter;
+    private String URL_Adress = "http://10.100.103.96:8090/adJspProject/getContent.jsp";
 
-    public TitleGet(FragAdapter adapter) {
-        this.adapter = adapter;
-    }
 
     @Override
     protected void onPreExecute(){
@@ -53,7 +45,7 @@ public class TitleGet extends AsyncTask<String,Void,String> {
 
             //전송값 설정
             StringBuffer buffer = new StringBuffer();
-            buffer.append("title").append("=").append(strings[0]);
+            buffer.append("no").append("=").append(strings[0]);
 
             //서버로 전송
             OutputStreamWriter outStream = new OutputStreamWriter(conn.getOutputStream(), "utf-8");
@@ -76,30 +68,23 @@ public class TitleGet extends AsyncTask<String,Void,String> {
             e.printStackTrace();
         }
 
-        Log.i("Get result",res);
-        return res;
+        Log.i("Get result", res);
+
+
+//        ArrayList<UserContents> contentsList = new ArrayList<>(); //데이터 받을곳
+        String content = "";  // 데이터 받을 곳
+
+        try {
+            content = JsonParser.getContentJson(res);
+            return content;
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return "";
     }
 
     @Override
     protected void onPostExecute(String s) {
         super.onPostExecute(s);
-
-        Log.i("get2", s);
-
-        ArrayList<UserContents> contentsList = new ArrayList<>(); //데이터 받을곳
-        int count = 0;
-
-        try {
-            count = JsonParser.getTitleJson(s, contentsList);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
-        if (count == 0){
-
-        } else {
-            adapter.setDatas(contentsList);
-            adapter.notifyDataSetInvalidated();
-        }
     }
 }
