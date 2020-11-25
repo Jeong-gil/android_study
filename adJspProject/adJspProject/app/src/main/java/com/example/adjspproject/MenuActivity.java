@@ -25,22 +25,23 @@ public class MenuActivity extends AppCompatActivity {
         llm = new LinearLayoutManager(this);
 
         MenuList = new ArrayList();
-        MenuList.add("BottomNavigation");
-        MenuList.add("1");
-        MenuList.add("2");
-        MenuList.add("3");
-        MenuList.add("4");
-        MenuList.add("5");
-        MenuList.add("6");
-        MenuList.add("7");
-        MenuList.add("8");
-        MenuList.add("9");
-        MenuList.add("10");
-        MenuList.add("11");
-        MenuList.add("12");
-        MenuList.add("13");
-        MenuList.add("14");
-        MenuList.add("15");
+        MenuList.add("TEST_THEME");
+        MenuList.add("Medical");
+        MenuList.add("Sports");
+        MenuList.add("Trip");
+        MenuList.add("Study");
+        MenuList.add("Game");
+        MenuList.add("Reading");
+        MenuList.add("Movie");
+        MenuList.add("Food");
+        MenuList.add("Picture");
+        MenuList.add("IT");
+        MenuList.add("Job");
+        MenuList.add("Etc");
+        MenuList.add("Etc");
+        MenuList.add("Etc");
+        MenuList.add("Etc");
+        MenuList.add("Etc");
 
         menuAdapter = new MenuAdapter(MenuList);
         rv_menu.setLayoutManager(llm);
@@ -56,7 +57,7 @@ public class MenuActivity extends AppCompatActivity {
 
     private void intentmenu(int position, String menuname){
         switch (menuname) {
-            case "BottomNavigation" :
+            case "TEST_THEME" :
                 Intent intentBottomNavi = new Intent(MenuActivity.this, Menu_BottomNavigation.class);
                 startActivity(intentBottomNavi);
                 break;

@@ -134,6 +134,37 @@ public class QueryBean {
 		return result;
 	}
 	
+public int insertContent(String userID, String title, String content) {
+		
+		int result = 0;
+		
+		StringBuffer sb = new StringBuffer();
+		PreparedStatement pstmt = null;
+		
+		sb.append(" INSERT INTO ");
+		sb.append(" 	contents (userID, title, content) ");
+		sb.append(" VALUES ");
+		sb.append(" 	('"+ userID +"', '"+ title +"', '"+ content +"')");
+		
+		System.out.println(sb.toString());
+		
+		try {
+			pstmt = conn.prepareStatement(sb.toString());
+			result = pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (pstmt != null)
+					pstmt.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		return result;
+	}
+	
 	public int deleteUserInfo(String id) {
 		
 		int result = 0;
