@@ -281,7 +281,26 @@ public int insertContent(String userID, String title, String content) {
 		return res;
 	}
 	
-	
+public ArrayList searchTitleByuserID(String userID) throws Exception {
+		
+		StringBuffer sb = new StringBuffer();
+		
+		sb.append(" SELECT * ");
+		sb.append(" FROM contents ");
+		sb.append(" WHERE userID = '"+ userID +"' ");
+		
+		rs = stmt.executeQuery(sb.toString());
+		
+		ArrayList res = new ArrayList();
+		while (rs.next()) {
+			res.add(rs.getString(1));
+			res.add(rs.getString(2));
+			res.add(rs.getString(3));
+			res.add(rs.getString(4));
+		}
+		System.out.println(sb.toString());
+		return res;
+	}
 	
 	public String getContentByNo(String no) throws Exception {
 		

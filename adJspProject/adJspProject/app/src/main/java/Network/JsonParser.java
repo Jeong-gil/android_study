@@ -70,13 +70,12 @@ public class JsonParser {
         for (int i=0; i < jsonArray.length(); i++) {
 
             JSONObject jsonObj = (JSONObject)jsonArray.get(i);
+
             if (jsonObj.getString("no").toString().equals("null"))
                 strNo = "-";
             else {
                 strNo = jsonObj.getString("no").toString();
-                System.out.println("테스트 : " + strNo);
             }
-
 
             if (jsonObj.getString("userID").toString().equals("null"))
                 strUserID = "-";

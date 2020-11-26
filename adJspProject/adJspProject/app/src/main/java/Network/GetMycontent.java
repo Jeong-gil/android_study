@@ -3,7 +3,7 @@ package Network;
 import android.os.AsyncTask;
 import android.util.Log;
 
-import com.example.adjspproject.FragAdapter;
+import com.example.adjspproject.FragAdapterMycontent;
 import com.example.adjspproject.UserContents;
 
 import org.json.JSONException;
@@ -18,13 +18,13 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 
-public class GetTitle extends AsyncTask<String,Void,String> {
+public class GetMycontent extends AsyncTask<String,Void,String> {
 
     private URL Url;
-    private String URL_Adress = "http://192.168.1.185:8090/adJspProject/getTitle.jsp";
-    private FragAdapter adapter;
+    private String URL_Adress = "http://192.168.1.185:8090/adJspProject/getMycontent.jsp";
+    private FragAdapterMycontent adapter;
 
-    public GetTitle(FragAdapter adapter) {
+    public GetMycontent(FragAdapterMycontent adapter) {
         this.adapter = adapter;
     }
 
@@ -53,7 +53,7 @@ public class GetTitle extends AsyncTask<String,Void,String> {
 
             //전송값 설정
             StringBuffer buffer = new StringBuffer();
-            buffer.append("title").append("=").append(strings[0]);
+            buffer.append("userID").append("=").append(strings[0]);
 
             //서버로 전송
             OutputStreamWriter outStream = new OutputStreamWriter(conn.getOutputStream(), "utf-8");
@@ -98,7 +98,7 @@ public class GetTitle extends AsyncTask<String,Void,String> {
         if (count == 0){
 
         } else {
-            adapter.setDatas(contentsList);
+            adapter.setDatasMycontent(contentsList);
             adapter.notifyDataSetInvalidated();
         }
     }

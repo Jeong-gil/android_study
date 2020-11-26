@@ -25,7 +25,7 @@ import java.net.URL;
 public class JoinAction extends AsyncTask<String, Void, String> {
 
     private URL Url;
-    private String URL_Adress = "http://10.100.103.96:8090/adJspProject/joinAction.jsp";
+    private String URL_Adress = "http://192.168.1.185:8090/adJspProject/joinAction.jsp";
     private Context context;
 
     // 세션처럼 안드로이드에 아이디값 넘겨줄 변수

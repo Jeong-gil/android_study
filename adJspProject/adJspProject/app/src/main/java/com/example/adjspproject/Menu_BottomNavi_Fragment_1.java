@@ -22,8 +22,7 @@ import Network.GetContent;
 import Network.GetTitle;
 
 public class Menu_BottomNavi_Fragment_1 extends Fragment {
-
-    private View v;
+    
     private ListView listView;
     private FragAdapter fragAdapter;
 
