@@ -47,17 +47,21 @@ public class Menu_BottomNavi_Fragment_1 extends Fragment {
 
 //                Toast.makeText(getContext(), "확인", Toast.LENGTH_SHORT).show();
 
+                TextView tv_fragItem = view.findViewById(R.id.tv_fragItem);
+                String title = tv_fragItem.getText().toString();
+
                 TextView tvFragItem2 = view.findViewById(R.id.tv_fragItem2);
                 String strNo = tvFragItem2.getText().toString();
 //                Toast.makeText(getContext(), strNo, Toast.LENGTH_SHORT).show();
 
                 try {
-                    String testStr = new GetContent().execute(strNo).get();
-                    System.out.println("인텐트로 넘겨줄 글 내용 : " + testStr);
+                    String contentStr = new GetContent().execute(strNo).get();
+                    System.out.println("인텐트로 넘겨줄 글 내용 : " + contentStr);
 
                     Intent intent = new Intent(getContext(), SelectedContentView.class);
 
-                    intent.putExtra("content",testStr);
+                    intent.putExtra("title", title);
+                    intent.putExtra("content", contentStr);
 
                     startActivity(intent);
 
