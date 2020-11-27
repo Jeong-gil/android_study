@@ -3,6 +3,7 @@ package com.example.adjspproject;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
@@ -13,6 +14,8 @@ import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
 
+import java.util.SplittableRandom;
+
 import Network.JoinAction;
 import Network.LoginAction;
 
@@ -21,6 +24,9 @@ public class LoginActivity extends AppCompatActivity {
     Button btn_login, btn_join;
     TextInputEditText edit_id, edit_pwd;
     AlertDialog.Builder dialog_join;
+
+    // BackPressHandler 객체 선언, 할당
+    private BackPressHandler backPressHandler = new BackPressHandler(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -99,5 +105,12 @@ public class LoginActivity extends AppCompatActivity {
                 });
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+
+        // Default
+        backPressHandler.onBackPressed();
     }
 }
