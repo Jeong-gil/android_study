@@ -1,5 +1,6 @@
 package com.example.adjspproject;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
@@ -61,6 +62,12 @@ public class Menu_BottomNavigation extends AppCompatActivity {
                 break;
         }
         return;
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(getApplicationContext(), MenuActivity.class);
+        startActivity(intent);
     }
 
 }

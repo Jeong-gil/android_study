@@ -27,7 +27,7 @@
             android:layout_height="wrap_content"
             android:textSize="30sp"
             android:background="@drawable/border"
-            android:maxLength="20"/>
+            android:maxLength="50"/>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

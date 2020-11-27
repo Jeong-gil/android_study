@@ -23,6 +23,9 @@ public class MenuActivity extends AppCompatActivity {
     private MenuAdapter menuAdapter;
     private LinearLayoutManager llm;
 
+    // BackPressHandler 객체 선언, 할당
+    private BackPressHandler backPressHandler = new BackPressHandler(this);
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -84,13 +87,24 @@ public class MenuActivity extends AppCompatActivity {
 
         switch (item.getItemId()) {
             case R.id.navi_menu_more:
-                System.out.println("더보기1 클릭");
+                System.out.println("내정보 클릭");
                 break;
             case R.id.navi_menu_more2:
-                System.out.println("더보기2 클릭");
+                System.out.println("로그아웃 클릭");
+                UserSession.userID = "";
+                Intent intentLogout = new Intent(MenuActivity.this, LoginActivity.class);
+                startActivity(intentLogout);
                 break;
         }
 
         return true;
     }
+
+    @Override
+    public void onBackPressed() {
+
+        // Default
+        backPressHandler.onBackPressed();
+    }
+
 }
