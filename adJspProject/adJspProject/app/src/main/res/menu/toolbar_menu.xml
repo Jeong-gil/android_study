@@ -16,13 +16,13 @@
     <item
         android:id="@+id/navi_menu_more"
         android:enabled="true"
-        android:title="더보기"
+        android:title="내정보"
         app:showAsAction="never" />
 
     <item
         android:id="@+id/navi_menu_more2"
         android:enabled="true"
-        android:title="더보기2"
+        android:title="로그아웃"
         app:showAsAction="never" />
 
 </menu>

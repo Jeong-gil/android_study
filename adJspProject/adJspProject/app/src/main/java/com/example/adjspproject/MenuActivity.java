@@ -2,12 +2,18 @@ package com.example.adjspproject;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.android.material.appbar.MaterialToolbar;
 
 import java.util.ArrayList;
 
@@ -23,6 +29,9 @@ public class MenuActivity extends AppCompatActivity {
         setContentView(R.layout.activity_menu);
         rv_menu = (RecyclerView) findViewById(R.id.rv_main);
         llm = new LinearLayoutManager(this);
+
+        MaterialToolbar toolbar = (MaterialToolbar) findViewById(R.id.materialtoolbar);
+        setSupportActionBar(toolbar);
 
         MenuList = new ArrayList();
         MenuList.add("TEST_THEME");
@@ -62,5 +71,26 @@ public class MenuActivity extends AppCompatActivity {
                 startActivity(intentBottomNavi);
                 break;
         }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.toolbar_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
+        switch (item.getItemId()) {
+            case R.id.navi_menu_more:
+                System.out.println("더보기1 클릭");
+                break;
+            case R.id.navi_menu_more2:
+                System.out.println("더보기2 클릭");
+                break;
+        }
+
+        return true;
     }
 }
