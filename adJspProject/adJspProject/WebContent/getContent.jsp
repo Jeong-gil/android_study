@@ -30,7 +30,7 @@ if(strNo.equals("")) {
 	out.println("}");
 } else {
 	out.println("{");
-	out.println("\"content\": \""	+ strNo + "\"");
+	out.println("\"strNo\": \""	+ strNo + "\"");
 	out.println("} ");
 	
 	out.println("]");

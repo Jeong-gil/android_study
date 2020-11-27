@@ -103,8 +103,8 @@ public class MenuActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
 
-        // Default
-        backPressHandler.onBackPressed();
+        Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+        startActivity(intent);
     }
 
 }
