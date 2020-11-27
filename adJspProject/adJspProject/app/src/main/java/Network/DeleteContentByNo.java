@@ -1,14 +1,13 @@
 package Network;
 
 import android.os.AsyncTask;
-import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.ListView;
 
 import com.example.adjspproject.Custom_Adapter;
-import com.example.adjspproject.FragAdapter;
+import com.example.adjspproject.FragAdapterMycontent;
 import com.example.adjspproject.R;
-import com.example.adjspproject.UserContents;
+import com.example.adjspproject.UserSession;
 
 import org.json.JSONException;
 
@@ -20,12 +19,16 @@ import java.io.PrintWriter;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.ArrayList;
 
-public class InsertContent extends AsyncTask<String,Void,String> {
+public class DeleteContentByNo extends AsyncTask<String,Void,String> {
 
     private URL Url;
-    private String URL_Adress = "http://10.100.103.96:8090/adJspProject/insertContent.jsp";
+    private String URL_Adress = "http://10.100.103.96:8090/adJspProject/deleteContentByNo.jsp";
+    private FragAdapterMycontent adapter;
+
+    public DeleteContentByNo(FragAdapterMycontent adapter){
+        this.adapter = adapter;
+    }
 
     @Override
     protected void onPreExecute(){
@@ -37,7 +40,7 @@ public class InsertContent extends AsyncTask<String,Void,String> {
 
         String res = "";
 
-        try {
+        try{
             Url = new URL(URL_Adress);
             HttpURLConnection conn = (HttpURLConnection)Url.openConnection();
 
@@ -48,26 +51,23 @@ public class InsertContent extends AsyncTask<String,Void,String> {
             conn.setRequestMethod("POST");
 
             //content-type 설정
-            conn.setRequestProperty("Content-type","application/x-www-form-urlencoded; charset=utf-8");
+            conn.setRequestProperty("Content-type", "application/x-www-form-urlencoded; charset=utf-8");
 
             //전송값 설정
             StringBuffer buffer = new StringBuffer();
-            buffer.append("userID").append("=").append(strings[0]);
-            buffer.append("&title").append("=").append(strings[1]);
-            buffer.append("&content").append("=").append(strings[2]);
+            buffer.append("no").append("=").append(strings[0]);
 
             //서버로 전송
-            OutputStreamWriter outStream = new OutputStreamWriter(conn.getOutputStream(),"utf-8");
+            OutputStreamWriter outStream = new OutputStreamWriter(conn.getOutputStream(), "utf-8");
             PrintWriter writer = new PrintWriter(outStream);
             writer.write(buffer.toString());
             writer.flush();
 
             StringBuilder builder = new StringBuilder();
-            BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream(),"utf-8"));
-
+            BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream(), "utf-8"));
             String line;
 
-            while ((line = in.readLine()) != null) {
+            while((line = in.readLine()) != null) {
                 builder.append(line + "\n");
             }
 
@@ -75,11 +75,9 @@ public class InsertContent extends AsyncTask<String,Void,String> {
 
         } catch (MalformedURLException e) {
             e.printStackTrace();
-        } catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
-
-        Log.i("Get result",res);
         return res;
     }
 
@@ -95,11 +93,10 @@ public class InsertContent extends AsyncTask<String,Void,String> {
             e.printStackTrace();
         }
 
-        if(res==0){
+        if (res==0) {
 
-        }
-        else {
-            System.out.println("글쓰기 성공");
+        } else {
+            new GetMycontent((FragAdapterMycontent)adapter).execute(UserSession.userID);
         }
     }
 }

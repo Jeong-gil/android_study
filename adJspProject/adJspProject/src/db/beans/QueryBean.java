@@ -197,6 +197,38 @@ public int insertContent(String userID, String title, String content) {
 		return result;
 	}
 	
+public int deleteContent(String no) {
+		
+		int result = 0;
+		
+		StringBuffer sb = new StringBuffer();
+		PreparedStatement pstmt = null;
+		
+		sb.append(" DELETE FROM ");
+		sb.append(" 	contents ");
+		sb.append(" WHERE ");
+		sb.append(" 	no = ? ");
+		
+		try {
+			pstmt = conn.prepareStatement(sb.toString());
+			pstmt.clearParameters();
+			pstmt.setString(1, no);
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (pstmt != null)
+					pstmt.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		return result;
+	}
+	
 	public int updateUserInfo(String id, String name, String phone, String grade) {
 		
 		int result = 0;

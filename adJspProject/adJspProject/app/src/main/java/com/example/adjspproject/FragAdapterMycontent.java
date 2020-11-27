@@ -6,9 +6,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+
+import Network.DeleteContentByNo;
 
 public class FragAdapterMycontent extends BaseAdapter {
 
@@ -52,6 +55,29 @@ public class FragAdapterMycontent extends BaseAdapter {
 
         final TextView tvFragItem = view.findViewById(R.id.my_title);
         tvFragItem.setText(userContentsArr.get(i).title);
+
+
+        final TextView tvFragItem2 = view.findViewById(R.id.my_title_no);
+        tvFragItem2.setText(userContentsArr.get(i).no);
+        tvFragItem2.setVisibility(View.GONE);
+
+
+        Button updateButton = view.findViewById(R.id.btn_myupdate);
+        updateButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                System.out.println("클릭 확인");
+            }
+        });
+
+        Button deleteButton = view.findViewById(R.id.btn_delete);
+        deleteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                System.out.println(tvFragItem2.getText().toString());
+                new DeleteContentByNo(FragAdapterMycontent.this).execute(tvFragItem2.getText().toString());
+            }
+        });
 
         return view;
     }

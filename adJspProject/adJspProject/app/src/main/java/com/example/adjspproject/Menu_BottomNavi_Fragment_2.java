@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import androidx.annotation.NonNull;
@@ -13,7 +14,6 @@ import androidx.fragment.app.Fragment;
 import java.util.ArrayList;
 
 import Network.GetMycontent;
-import Network.GetTitle;
 
 public class Menu_BottomNavi_Fragment_2 extends Fragment {
 
@@ -33,6 +33,13 @@ public class Menu_BottomNavi_Fragment_2 extends Fragment {
         listView2.setAdapter(fragAdapterMycontent);
 
         new GetMycontent((FragAdapterMycontent)listView2.getAdapter()).execute(UserSession.userID);
+
+//        listView2.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//                System.out.println("클릭확인");
+//            }
+//        });
 
         return frgView2;
     }
