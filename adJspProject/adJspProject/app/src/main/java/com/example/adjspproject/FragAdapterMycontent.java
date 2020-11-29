@@ -2,6 +2,7 @@ package com.example.adjspproject;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -63,10 +64,20 @@ public class FragAdapterMycontent extends BaseAdapter {
 
 
         Button updateButton = view.findViewById(R.id.btn_myupdate);
+        View finalView = view;
         updateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 System.out.println("클릭 확인");
+                System.out.println("글 번호 : " + tvFragItem2.getText().toString());
+
+                Intent intent = new Intent(fragAct, WritingActivity.class);
+
+                intent.putExtra("no", tvFragItem2.getText().toString());
+                intent.putExtra("title", tvFragItem.getText().toString());
+
+                fragAct.startActivity(intent);
+
             }
         });
 

@@ -1,12 +1,8 @@
 package Network;
 
 import android.os.AsyncTask;
-import android.view.LayoutInflater;
-import android.view.View;
 
-import com.example.adjspproject.Custom_Adapter;
 import com.example.adjspproject.FragAdapterMycontent;
-import com.example.adjspproject.R;
 import com.example.adjspproject.UserSession;
 
 import org.json.JSONException;
@@ -23,7 +19,7 @@ import java.net.URL;
 public class DeleteContentByNo extends AsyncTask<String,Void,String> {
 
     private URL Url;
-    private String URL_Adress = "http://10.100.103.96:8090/adJspProject/deleteContentByNo.jsp";
+    private String URL_Adress = "http://192.168.1.195:8090/adJspProject/deleteContentByNo.jsp";
     private FragAdapterMycontent adapter;
 
     public DeleteContentByNo(FragAdapterMycontent adapter){

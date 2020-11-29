@@ -3,8 +3,6 @@ package Network;
 import android.os.AsyncTask;
 import android.util.Log;
 
-import com.example.adjspproject.Custom_Adapter;
-
 import org.json.JSONException;
 
 import java.io.BufferedReader;
@@ -16,15 +14,10 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-public class NetworkUpdate extends AsyncTask<String,Void,String> {
+public class UpdateContent extends AsyncTask<String,Void,String> {
 
     private URL Url;
-    private String URL_Adress = "http://192.168.1.195:8090/adJspProject/testDB3_update.jsp";
-    private Custom_Adapter adapter;
-
-    public NetworkUpdate(Custom_Adapter adapter){
-        this.adapter = adapter;
-    }
+    private String URL_Adress = "http://192.168.1.195:8090/adJspProject/updateContent.jsp";
 
     @Override
     protected void onPreExecute(){
@@ -51,10 +44,9 @@ public class NetworkUpdate extends AsyncTask<String,Void,String> {
 
             //전송값 설정
             StringBuffer buffer = new StringBuffer();
-            buffer.append("id").append("=").append(strings[0]);
-            buffer.append("&name").append("=").append(strings[1]);
-            buffer.append("&phone").append("=").append(strings[2]);
-            buffer.append("&grade").append("=").append(strings[3]);
+            buffer.append("no").append("=").append(strings[0]);
+            buffer.append("&title").append("=").append(strings[1]);
+            buffer.append("&content").append("=").append(strings[2]);
 
             //서버로 전송
             OutputStreamWriter outStream = new OutputStreamWriter(conn.getOutputStream(),"utf-8");
@@ -64,6 +56,7 @@ public class NetworkUpdate extends AsyncTask<String,Void,String> {
 
             StringBuilder builder = new StringBuilder();
             BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream(),"utf-8"));
+
             String line;
 
             while ((line = in.readLine()) != null) {
@@ -74,11 +67,11 @@ public class NetworkUpdate extends AsyncTask<String,Void,String> {
 
         } catch (MalformedURLException e) {
             e.printStackTrace();
-        } catch (IOException e) {
+        } catch (IOException e){
             e.printStackTrace();
         }
 
-        Log.i("Get result", res);
+        Log.i("Get result",res);
         return res;
     }
 
@@ -96,8 +89,9 @@ public class NetworkUpdate extends AsyncTask<String,Void,String> {
 
         if(res==0){
 
-        } else{
-            new NetworkGet(adapter).execute("");
+        }
+        else {
+            System.out.println("글 수정 성공");
         }
     }
 }

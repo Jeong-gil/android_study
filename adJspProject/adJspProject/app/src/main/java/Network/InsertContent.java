@@ -2,13 +2,6 @@ package Network;
 
 import android.os.AsyncTask;
 import android.util.Log;
-import android.view.View;
-import android.widget.ListView;
-
-import com.example.adjspproject.Custom_Adapter;
-import com.example.adjspproject.FragAdapter;
-import com.example.adjspproject.R;
-import com.example.adjspproject.UserContents;
 
 import org.json.JSONException;
 
@@ -25,7 +18,7 @@ import java.util.ArrayList;
 public class InsertContent extends AsyncTask<String,Void,String> {
 
     private URL Url;
-    private String URL_Adress = "http://10.100.103.96:8090/adJspProject/insertContent.jsp";
+    private String URL_Adress = "http://192.168.1.195:8090/adJspProject/insertContent.jsp";
 
     @Override
     protected void onPreExecute(){

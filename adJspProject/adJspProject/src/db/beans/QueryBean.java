@@ -134,7 +134,7 @@ public class QueryBean {
 		return result;
 	}
 	
-public int insertContent(String userID, String title, String content) {
+	public int insertContent(String userID, String title, String content) {
 		
 		int result = 0;
 		
@@ -150,6 +150,42 @@ public int insertContent(String userID, String title, String content) {
 		
 		try {
 			pstmt = conn.prepareStatement(sb.toString());
+			result = pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (pstmt != null)
+					pstmt.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		return result;
+	}
+	
+	public int updateContent(String no, String title, String content) {
+		
+		int result = 0;
+		
+		StringBuffer sb = new StringBuffer();
+		PreparedStatement pstmt = null;
+		
+		sb.append(" UPDATE contents ");
+		sb.append(" 	SET title = ?, content = ? ");
+		sb.append(" WHERE no = ? ");
+		
+		System.out.println(sb.toString());
+		
+		try {
+			pstmt = conn.prepareStatement(sb.toString());
+			pstmt.clearParameters();
+			
+			pstmt.setString(1, title);
+			pstmt.setString(2, content);
+			pstmt.setString(3, no);
+			
 			result = pstmt.executeUpdate();
 			
 		} catch (Exception e) {
@@ -197,7 +233,7 @@ public int insertContent(String userID, String title, String content) {
 		return result;
 	}
 	
-public int deleteContent(String no) {
+	public int deleteContent(String no) {
 		
 		int result = 0;
 		
@@ -313,7 +349,7 @@ public int deleteContent(String no) {
 		return res;
 	}
 	
-public ArrayList searchTitleByuserID(String userID) throws Exception {
+	public ArrayList searchTitleByuserID(String userID) throws Exception {
 		
 		StringBuffer sb = new StringBuffer();
 		
@@ -391,10 +427,10 @@ public ArrayList searchTitleByuserID(String userID) throws Exception {
 				e2.printStackTrace();
 			}
 		}
-		return -2;  // 데이터베이스 오류
+		return -2;  // database error
 	}
 	
-public int joinUser(String userID, String userPassword, String userName, String userGender, String userEmail) {
+	public int joinUser(String userID, String userPassword, String userName, String userGender, String userEmail) {
 		
 		StringBuffer sb = new StringBuffer();
 		PreparedStatement pstmt = null;

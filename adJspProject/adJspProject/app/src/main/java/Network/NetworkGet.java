@@ -21,7 +21,7 @@ import java.util.ArrayList;
 public class NetworkGet extends AsyncTask<String,Void,String> {
 
     private URL Url;
-    private String URL_Adress = "http://10.100.103.96:8090/adJspProject/testDB3_search.jsp";
+    private String URL_Adress = "http://192.168.1.195:8090/adJspProject/testDB3_search.jsp";
     private Custom_Adapter adapter;
 
     public NetworkGet(Custom_Adapter adapter) {
