@@ -35,13 +35,13 @@ public class WritingActivity extends AppCompatActivity {
         String no = intent.getStringExtra("no");
         String title = intent.getStringExtra("title");
 
-        if (no == null && title == null) System.out.println("no == null : " + no + ", title == null : " + title);
-        else System.out.println("no != null : " + no + ", title != null : " + title);
+//        if (no == null && title == null) System.out.println("no == null : " + no + ", title == null : " + title);
+//        else System.out.println("no != null : " + no + ", title != null : " + title);
 
 
         if (no != null && title != null) {
             edt_title.setText(title);
-            System.out.println("edt_title.getText().toString()" + edt_title.getText().toString());
+//            System.out.println("edt_title.getText().toString()" + edt_title.getText().toString());
 
             try {
                 String contentStr = new GetContent().execute(no).get();

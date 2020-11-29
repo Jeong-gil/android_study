@@ -87,6 +87,9 @@ public class MenuActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.navi_menu_more:
                 System.out.println("내정보 클릭");
+                Intent intentMyinfo = new Intent(MenuActivity.this, MyInformationActivity.class);
+                intentMyinfo.putExtra("userID", UserSession.userID);
+                startActivity(intentMyinfo);
                 break;
             case R.id.navi_menu_more2:
                 System.out.println("로그아웃 클릭");
