@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -82,11 +83,14 @@ public class FragAdapterMycontent extends BaseAdapter {
         });
 
         Button deleteButton = view.findViewById(R.id.btn_delete);
+        View finalView1 = view;
         deleteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 System.out.println(tvFragItem2.getText().toString());
                 new DeleteContentByNo(FragAdapterMycontent.this).execute(tvFragItem2.getText().toString());
+
+                Toast.makeText(finalView1.getContext(), "삭제되었습니다", Toast.LENGTH_SHORT).show();
             }
         });
 

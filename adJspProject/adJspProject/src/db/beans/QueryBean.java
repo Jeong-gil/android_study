@@ -238,6 +238,40 @@ public class QueryBean {
 		return result;
 	}
 	
+	public int DeleteUserByUserID(String userID) {
+		
+		int result = 0;
+		
+		StringBuffer sb = new StringBuffer();
+		PreparedStatement pstmt = null;
+		
+		sb.append(" DELETE ");
+		sb.append(" 	FROM user ");
+		sb.append(" WHERE userID = ? ");
+		
+		System.out.println(sb.toString());
+		
+		try {
+			pstmt = conn.prepareStatement(sb.toString());
+			pstmt.clearParameters();
+			
+			pstmt.setString(1, userID);
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (pstmt != null)
+					pstmt.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		return result;
+	}
+	
 	public int deleteUserInfo(String id) {
 		
 		int result = 0;
@@ -286,6 +320,38 @@ public class QueryBean {
 			pstmt = conn.prepareStatement(sb.toString());
 			pstmt.clearParameters();
 			pstmt.setString(1, no);
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (pstmt != null)
+					pstmt.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		return result;
+	}
+	
+	public int DeleteContentByuserID(String userID) {
+		
+		int result = 0;
+		
+		StringBuffer sb = new StringBuffer();
+		PreparedStatement pstmt = null;
+		
+		sb.append(" DELETE FROM ");
+		sb.append(" 	contents ");
+		sb.append(" WHERE ");
+		sb.append(" 	userID = ? ");
+		
+		try {
+			pstmt = conn.prepareStatement(sb.toString());
+			pstmt.clearParameters();
+			pstmt.setString(1, userID);
 			
 			result = pstmt.executeUpdate();
 			
