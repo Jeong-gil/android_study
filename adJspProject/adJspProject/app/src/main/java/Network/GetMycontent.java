@@ -21,7 +21,7 @@ import java.util.ArrayList;
 public class GetMycontent extends AsyncTask<String,Void,String> {
 
     private URL Url;
-    private String URL_Adress = "http://192.168.1.195:8090/adJspProject/getMycontent.jsp";
+    private String URL_Adress = "http://192.168.1.133:8090/adJspProject/getMycontent.jsp";
     private FragAdapterMycontent adapter;
 
     public GetMycontent(FragAdapterMycontent adapter) {

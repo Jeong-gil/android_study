@@ -5,19 +5,19 @@
         android:id="@+id/botton_navi_one"
         android:enabled="true"
         android:icon="@drawable/baseline_list_alt_black_18dp"
-        android:title="PAGE_1"
+        android:title="All posts"
         app:showAsAction="always" />
     <item
         android:id="@+id/botton_navi_two"
         android:enabled="true"
         android:icon="@drawable/baseline_list_alt_black_18dp"
-        android:title="PAGE_2"
+        android:title="My posts"
         app:showAsAction="always" />
     <item
         android:id="@+id/botton_navi_three"
         android:enabled="true"
         android:icon="@drawable/baseline_list_alt_black_18dp"
-        android:title="PAGE_3"
+        android:title="Diary"
         app:showAsAction="always" />
 
 </menu>

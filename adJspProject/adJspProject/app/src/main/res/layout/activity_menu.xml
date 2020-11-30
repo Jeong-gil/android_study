@@ -21,17 +21,19 @@
             app:layout_scrollFlags="scroll|exitUntilCollapsed|snap"
             app:statusBarScrim="?attr/colorPrimaryVariant">
 
-        <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/materialtoolbar"
-            style="@style/Widget.MaterialComponents.Toolbar.Primary"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:elevation="0dp"
-            app:layout_collapseMode="pin"
-            app:menu="@menu/toolbar_menu"
-            app:navigationIcon="@drawable/baseline_menu_white_18dp"
-            app:title="THEME"
-            android:background="#2d6187"/>
+            <!-- app:navigationIcon="@drawable/baseline_menu_white_18dp"
+             com.google.android.material.appbar.MaterialToolbar에
+             추가할 수 있으면 추가할 것-->
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/materialtoolbar"
+                style="@style/Widget.MaterialComponents.Toolbar.Primary"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:elevation="0dp"
+                app:layout_collapseMode="pin"
+                app:menu="@menu/toolbar_menu"
+                app:title="THEME"
+                android:background="#2d6187"/>
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>
     </com.google.android.material.appbar.AppBarLayout>
