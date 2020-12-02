@@ -18,7 +18,7 @@ public class DeleteContentByuserID extends AsyncTask<String,Void,String> {
     private String userID;
 
     private URL Url;
-    private String URL_Adress = "http://192.168.1.133:8090/adJspProject/DeleteContentByuserID.jsp";
+    private String URL_Adress = "http://192.168.1.61:8090/adJspProject/DeleteContentByuserID.jsp";
 
     @Override
     protected void onPreExecute(){
@@ -88,7 +88,7 @@ public class DeleteContentByuserID extends AsyncTask<String,Void,String> {
 
         } else {
             System.out.println("회원글 삭제 성공");
-            new DeleteUserByUserID().execute(userID);
         }
+        new DeleteUserByUserID().execute(userID);
     }
 }

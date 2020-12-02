@@ -11,7 +11,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import Network.DeleteContentByuserID;
-import Network.DeleteUserByUserID;
 import Network.UpdateMyInfo;
 
 public class MyInformationActivity extends AppCompatActivity {

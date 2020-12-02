@@ -18,7 +18,7 @@ import java.util.ArrayList;
 public class InsertContent extends AsyncTask<String,Void,String> {
 
     private URL Url;
-    private String URL_Adress = "http://192.168.1.133:8090/adJspProject/insertContent.jsp";
+    private String URL_Adress = "http://192.168.1.61:8090/adJspProject/insertContent.jsp";
 
     @Override
     protected void onPreExecute(){

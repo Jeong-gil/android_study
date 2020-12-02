@@ -16,7 +16,7 @@ import java.net.URL;
 public class DeleteUserByUserID extends AsyncTask<String,Void,String> {
 
     private URL Url;
-    private String URL_Adress = "http://192.168.1.133:8090/adJspProject/DeleteUserByUserID.jsp";
+    private String URL_Adress = "http://192.168.1.61:8090/adJspProject/DeleteUserByUserID.jsp";
 
     @Override
     protected void onPreExecute(){
